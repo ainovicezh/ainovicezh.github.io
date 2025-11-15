@@ -1,4 +1,164 @@
-<html>
-  <head><title>Hello</title></head>
-  <body><h1>这是我的 GitHub Pages 网站</h1></body>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>zh的主页</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      border-left: 4px solid #007acc;
+      padding-left: 10px;
+      color: #333;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+      margin: 40px 0;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .job-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      background-color: #fafafa;
+    }
+    .skills span {
+      display: inline-block;
+      background: #007acc;
+      color: white;
+      padding: 6px 12px;
+      margin: 5px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>欢迎来到 zh 的主页</h1>
+    <p>个人简历 · 项目展示 · 求职信息</p>
+  </header>
+  <main>
+    <!-- 个人信息 -->
+    <section>
+      <h2>个人信息</h2>
+      <p><strong>性别：</strong> 男</p>
+      <p><strong>年龄：</strong> 24岁</p>
+      <p><strong>学历：</strong> 广西外国语学院 · 人工智能专业</p>
+    </section>
+
+    <!-- 工作经历 -->
+    <section>
+      <h2>工作与实习经历</h2>
+      <div class="job-card">
+        <h3>华为机器有限公司 · 实习</h3>
+        <p><strong>部门：</strong> 试制导入部</p>
+        <p><strong>项目：</strong> 碳化硅 IGBT 项目</p>
+        <p><strong>时间：</strong> 2023.1 - 2023.6</p>
+        <p><strong>薪资：</strong> 7,000 元/月</p>
+      </div>
+      <div class="job-card">
+        <h3>中山比亚迪电子有限公司 · 仓库管理员</h3>
+        <p><strong>工作内容：</strong> 物料出入库管理，账目明细整理</p>
+        <p><strong>时间：</strong> 2023.8 - 2024.8</p>
+        <p><strong>薪资：</strong> 5,000 元/月</p>
+      </div>
+    </section>
+
+    <!-- 项目展示 -->
+    <section>
+      <h2>项目展示</h2>
+      <div class="job-card">
+        <h3>毕业设计项目</h3>
+        <img src="images/demo.png" alt="毕业设计演示图">
+        <p>项目名称：<a href="https://example.com/project-link" target="_blank">《基于T5的中文文本摘要自动生成系统设计与实现》</a></p>
+      </div>
+      <div class="job-card">
+        <h3>ESP32-C3-mini + MicroPython 自动浇花兼温湿度检测系统</h3>
+        <img src="images/esp32-demo.png" alt="ESP32项目演示图">
+        <p>项目名称：<a href="https://github.com/ainovicezh/ESP32C3mini-OLED-MicroPython" target="_blank">GitHub 仓库链接</a></p>
+        <p>功能：通过 ESP32-C3-mini 单片机结合 MicroPython，实现自动浇花与温湿度检测，并在 OLED 屏幕上实时显示数据。</p>
+      </div>
+    </section>
+
+    <!-- 技能标签 -->
+    <section>
+      <h2>技能标签</h2>
+      <div class="skills">
+        <span>Python</span>
+        <span>Ubuntu</span>
+        <span>PyTorch</span>
+        <span>NLP</span>
+        <span>网络爬虫</span>
+        <span>单片机软件开发</span>
+        <span>机器学习</span>
+        <span>深度学习</span>
+        <span>数据挖掘</span>
+      </div>
+    </section>
+
+    <!-- 求职信息 -->
+    <section>
+      <h2>求职意向</h2>
+      <div class="job-card">
+        <h3>目标岗位</h3>
+        <ul>
+          <li>💡 自然语言处理（NLP）</li>
+          <li>🔧 嵌入式软件开发</li>
+          <li>💻 软件开发 / 系统优化</li>
+          <li>🤖 人工智能相关岗位</li>
+          <li>🌐 物联网相关岗位</li>
+        </ul>
+        <p><strong>期望薪资：</strong> 2,000 ~ 8,000 元/月</p>
+        <p><strong>工作时间：</strong> 希望周末有休息</p>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section>
+      <h2>联系方式</h2>
+      <p>GitHub：<a href="https://github.com/ainovicezh" target="_blank">ainovicezh</a></p>
+      <p>邮箱：<a href="mailto:zh@lty.edu.kg">zh@lty.edu.kg</a></p>
+    </section>
+  </main>
+  <footer>
+    &copy; 2025 zh | Powered by GitHub Pages
+  </footer>
+</body>
 </html>
