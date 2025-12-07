@@ -2,166 +2,302 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>zh的主页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ainovice (Zh) | AI Developer</title>
   <link rel="icon" href="images/favicon.png" type="image/png">
   <style>
+    /* --- 全局变量与重置 --- */
+    :root {
+      --bg-color: #0d1117;           /* 背景深黑 */
+      --card-bg: #161b22;            /* 卡片灰黑 */
+      --text-main: #c9d1d9;          /* 主文字灰白 */
+      --text-secondary: #8b949e;     /* 次要文字深灰 */
+      --accent-color: #58a6ff;       /* 强调色(蓝) */
+      --border-color: #30363d;       /* 边框色 */
+      --success-color: #238636;      /* 绿色 */
+    }
+
     body {
-      font-family: "Segoe UI", sans-serif;
-      background-color: #f4f4f4;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
       margin: 0;
       padding: 0;
       line-height: 1.6;
     }
-    header {
-      background-color: #333;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    section {
-      margin-bottom: 40px;
-    }
-    h2 {
-      border-left: 4px solid #007acc;
-      padding-left: 10px;
-      color: #333;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-    footer {
-      text-align: center;
-      color: #666;
-      font-size: 14px;
-      margin: 40px 0;
-    }
+
     a {
-      color: #007acc;
+      color: var(--accent-color);
       text-decoration: none;
+      transition: 0.2s;
     }
     a:hover {
       text-decoration: underline;
+      color: #79c0ff;
     }
-    .job-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-      background-color: #fafafa;
+
+    /* --- 布局容器 --- */
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
-    .skills span {
-      display: inline-block;
-      background: #007acc;
-      color: white;
-      padding: 6px 12px;
-      margin: 5px;
+
+    /* --- 头部 Header --- */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 40px;
+    }
+    h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin: 0 0 10px 0;
+      letter-spacing: -1px;
+    }
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* --- 通用区块 Section --- */
+    section {
+      margin-bottom: 50px;
+    }
+    h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      border-left: 4px solid var(--accent-color);
+      padding-left: 15px;
+      margin-bottom: 25px;
+    }
+
+    /* --- 个人信息胶囊 --- */
+    .info-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .badge {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 5px 15px;
       border-radius: 20px;
-      font-size: 14px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .badge strong {
+      color: var(--text-main);
+    }
+
+    /* --- 卡片样式 (工作/项目) --- */
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 25px;
+      margin-bottom: 20px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      border-color: var(--text-secondary);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .card-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 15px;
+      display: block;
+    }
+    .card-meta span {
+      margin-right: 15px;
+    }
+
+    /* --- 图片样式 --- */
+    .project-images {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      overflow-x: auto;
+    }
+    .project-images img {
+      max-height: 200px; /* 限制图片高度，防止过大 */
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* --- 技能标签 --- */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .skill-tag {
+      background: rgba(56, 139, 253, 0.15); /* 淡蓝色背景 */
+      color: #79c0ff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(56, 139, 253, 0.4);
+    }
+    .skill-tag:hover {
+      background: rgba(56, 139, 253, 0.3);
+    }
+
+    /* --- 底部 --- */
+    footer {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      margin-top: 60px;
+      padding-bottom: 40px;
+    }
+
+    /* --- 手机端适配 --- */
+    @media (max-width: 600px) {
+      .card h3 {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .project-images {
+        flex-direction: column;
+      }
+      .project-images img {
+        max-height: none;
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>欢迎来到 zh 的主页</h1>
-    <p>个人简历 · 项目展示 · 求职信息</p>
+    <h1>Welcome, I'm Zh</h1>
+    <p class="subtitle">> AI Student / Embedded Developer / Explorer_</p>
+    
+    <div class="info-badges">
+      <span class="badge">🎓 广西外国语学院 · 人工智能</span>
+      <span class="badge">📍 24岁 · 男</span>
+      <span class="badge">💼 本科 · 应届/求职中</span>
+    </div>
   </header>
+
   <main>
-    <!-- 个人信息 -->
-    <section>
-      <h2>个人信息</h2>
-      <p><strong>性别：</strong> 男</p>
-      <p><strong>年龄：</strong> 24岁</p>
-      <p><strong>学校：</strong> 广西外国语学院 · 人工智能专业</p>
-      <p><strong>学历：</strong> 大学本科</p>
-    </section>
 
-    <!-- 工作经历 -->
     <section>
-      <h2>工作与实习经历</h2>
-      <div class="job-card">
-        <h3>华为机器有限公司 · 实习</h3>
-        <p><strong>部门：</strong> 试制导入部</p>
-        <p><strong>项目：</strong> 碳化硅 IGBT 项目</p>
-        <p><strong>时间：</strong> 2023.1 - 2023.6</p>
-        <p><strong>薪资：</strong> 7,000 元/月</p>
-      </div>
-      <div class="job-card">
-        <h3>中山比亚迪电子有限公司 · 仓库管理员</h3>
-        <p><strong>工作内容：</strong> 物料出入库管理，账目明细整理</p>
-        <p><strong>时间：</strong> 2023.8 - 2024.8</p>
-        <p><strong>薪资：</strong> 5,000 元/月</p>
-      </div>
-    </section>
-
-    <!-- 项目展示 -->
-    <section>
-      <h2>项目展示</h2>
-      <div class="job-card">
-        <h3>毕业设计项目</h3>
-        <img src="images/论文任务书.png" alt="毕业设计任务书">
-        <p>项目名称：<a href="https://example.com/project-link" target="_blank">《基于T5的中文文本摘要自动生成系统设计与实现》</a></p>
-      </div>
-      <div class="job-card">
-        <h3>ESP32-C3-mini + MicroPython 自动浇花兼温湿度检测系统</h3>
-        <img src="images/浇花系统.jpg" alt="ESP32项目演示图">
-        <img src="images/温湿度+大气压.jpg" alt="ESP32项目演示图">
-        <p>项目名称：<a href="https://github.com/ainovicezh/ESP32C3mini-OLED-MicroPython" target="_blank">GitHub 仓库链接</a></p>
-        <p>功能：通过 ESP32-C3-mini 单片机结合 MicroPython，实现自动浇花与温湿度检测，并在 OLED 屏幕上实时显示数据。</p>
-      </div>
-    </section>
-
-    <!-- 技能标签 -->
-    <section>
-      <h2>技能标签</h2>
+      <h2>🔧 技术栈</h2>
       <div class="skills">
-        <span>Python</span>
-        <span>Ubuntu</span>
-        <span>PyTorch</span>
-        <span>NLP</span>
-        <span>网络爬虫</span>
-        <span>单片机软件开发</span>
-        <span>机器学习</span>
-        <span>深度学习</span>
-        <span>数据挖掘</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">PyTorch</span>
+        <span class="skill-tag">NLP (Transformer/T5)</span>
+        <span class="skill-tag">Ubuntu / Linux</span>
+        <span class="skill-tag">MicroPython</span>
+        <span class="skill-tag">ESP32 单片机</span>
+        <span class="skill-tag">网络爬虫</span>
+        <span class="skill-tag">Azure Cloud</span>
       </div>
     </section>
 
-    <!-- 求职信息 -->
     <section>
-      <h2>求职意向</h2>
-      <div class="job-card">
-        <h3>目标岗位</h3>
-        <ul>
-          <li>💡 自然语言处理（NLP）</li>
-          <li>🔧 嵌入式软件开发</li>
-          <li>💻 软件开发 / 系统优化</li>
-          <li>🤖 人工智能相关岗位</li>
-          <li>🌐 物联网相关岗位</li>
+      <h2>🚀 项目经历</h2>
+      
+      <div class="card">
+        <h3>
+          基于 T5 的中文文本摘要系统
+          <span style="font-size:0.8rem; background:#238636; padding:2px 8px; border-radius:10px;">毕业设计</span>
+        </h3>
+        <div class="card-meta">2025 (预计) | NLP, Python, Flask</div>
+        <p>
+          设计并实现了一个基于 Google T5 模型的中文长文本自动摘要系统。
+          <br>
+          <span style="color:var(--text-secondary)">* 删除了过时的任务书图片，建议您后续可以放一张系统运行截图或者架构图。</span>
+        </p>
+        <div style="margin-top:10px;">
+           <a href="https://example.com/project-link" target="_blank">📄 查看项目详情 / 论文</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>ESP32 自动浇花与环境监测系统</h3>
+        <div class="card-meta">IoT, MicroPython, 嵌入式开发</div>
+        <p>
+          使用 ESP32-C3-mini 单片机与 MicroPython 开发。实现了土壤湿度检测自动浇花，以及环境温湿度、大气压实时监测并在 OLED 屏幕显示。
+        </p>
+        <div class="project-images">
+          <img src="images/浇花系统.jpg" alt="ESP32项目演示图-浇花">
+          <img src="images/温湿度+大气压.jpg" alt="ESP32项目演示图-温湿度">
+        </div>
+        <div style="margin-top:15px;">
+          <a href="https://github.com/ainovicezh/ESP32C3mini-OLED-MicroPython" target="_blank">🔗 GitHub 仓库代码</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>💼 工作与实习</h2>
+      
+      <div class="card">
+        <h3>华为机器有限公司 (Huawei)</h3>
+        <div class="card-meta">
+          <span>📅 2023.1 - 2023.6</span>
+          <span>📍 试制导入部 | 实习</span>
+        </div>
+        <p>参与碳化硅 IGBT 项目的试制导入工作。</p>
+        <p style="font-size:0.9rem; color:var(--text-secondary)">薪资: 7,000 元/月</p>
+      </div>
+
+      <div class="card">
+        <h3>中山比亚迪电子有限公司 (BYD)</h3>
+        <div class="card-meta">
+          <span>📅 2023.8 - 2024.8</span>
+          <span>📍 仓库管理员</span>
+        </div>
+        <p>负责物料出入库管理及账目明细整理，确保产线物资流转准确。</p>
+        <p style="font-size:0.9rem; color:var(--text-secondary)">薪资: 5,000 元/月</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>🎯 求职意向</h2>
+      <div class="card">
+        <ul style="padding-left: 20px; color: var(--text-main);">
+          <li style="margin-bottom:8px;">💡 自然语言处理 (NLP) / 人工智能相关</li>
+          <li style="margin-bottom:8px;">🔧 嵌入式软件开发 (IoT)</li>
+          <li style="margin-bottom:8px;">💻 软件开发 / Python 后端</li>
         </ul>
-        <p><strong>期望薪资：</strong> 2,000 ~ 8,000 元/月</p>
-        <p><strong>工作时间：</strong> 希望周末有休息</p>
+        <div style="margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 15px;">
+          <p><strong>期望薪资：</strong> 2,000 ~ 8,000 元/月</p>
+          <p><strong>其他要求：</strong> 希望周末双休</p>
+        </div>
       </div>
     </section>
 
-    <!-- 联系方式 -->
-    <section>
-      <h2>联系方式</h2>
-      <p>GitHub：<a href="https://github.com/ainovicezh" target="_blank">ainovicezh</a></p>
-      <p>邮箱：<a href="mailto:zh@lty.edu.kg">zh@lty.edu.kg</a></p>
+    <section style="text-align: center; margin-top: 80px;">
+      <h2>📬 联系我</h2>
+      <p style="font-size: 1.2rem;">
+        <a href="mailto:zh@lty.edu.kg" style="margin: 0 15px;">📧 Email</a>
+        <a href="https://github.com/ainovicezh" target="_blank" style="margin: 0 15px;">🐙 GitHub</a>
+      </p>
     </section>
+
   </main>
+
   <footer>
-    &copy; 2025 zh | Powered by GitHub Pages
+    <p>&copy; 2025 Ainovice (Zh). Hosted on GitHub Pages.</p>
   </footer>
+
 </body>
 </html>
